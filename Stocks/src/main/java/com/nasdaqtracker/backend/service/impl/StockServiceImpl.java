@@ -9,11 +9,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+// Service implementations for StockService
 @Service
 public class StockServiceImpl implements StockService {
 
+    
     private final FinnhubClient FinnhubClient;
 
+    // FinnhubClient contains the logic for fetching data from Finnhub API
     @Autowired
     public StockServiceImpl(FinnhubClient FinnhubClient) {
         this.FinnhubClient = FinnhubClient;

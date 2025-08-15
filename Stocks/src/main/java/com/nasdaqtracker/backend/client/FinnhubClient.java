@@ -20,6 +20,7 @@ public class FinnhubClient {
 
     // RestTemplate for making HTTP requests
     private final RestTemplate restTemplate = new RestTemplate();
+
     // Base URLs for Finnhub API
     private static final String FINNHUB_QUOTE_URL = "https://finnhub.io/api/v1/quote";
     private static final String FINNHUB_PROFILE_URL = "https://finnhub.io/api/v1/stock/profile2";
@@ -31,20 +32,24 @@ public class FinnhubClient {
            "JNJ", "CVX", "XOM", "MCD", "C", "BAC", "WFC", "V"
     );
 
+    // Fetches top 20 stocks from Finnhub
     public List<StockDTO> getTop20Stocks() {
         List<StockDTO> stocks = new ArrayList<>();
  
+        // Iterate over top 20 stocks (symbols)
         for (String symbol : TOP_20_STOCKS) {
             try {
                 // Quote endpoint: returns fields c (current), d (change), dp (percent)
                 String quoteUrl = FINNHUB_QUOTE_URL + "?symbol=" + symbol + "&token=" + apiKey;
                 Map<String, Object> quote = restTemplate.getForObject(quoteUrl, Map.class);
  
+                // Check if quote data is valid
                 if (quote == null || quote.isEmpty() || quote.get("c") == null) {
                     System.out.println("No quote data for " + symbol + ": " + quote);
                     continue;
                 }
  
+                // Extract quote data
                 double current = Double.parseDouble(quote.get("c").toString());
                 double change = quote.get("d") != null ? Double.parseDouble(quote.get("d").toString()) : 0.0;
                 double changePercent = quote.get("dp") != null ? Double.parseDouble(quote.get("dp").toString()) : 0.0;
@@ -57,9 +62,11 @@ public class FinnhubClient {
                     if (profile != null && profile.get("name") != null) {
                         name = profile.get("name").toString();
                     }
-                } catch (Exception ignored) {
+                } 
+                catch (Exception ignored) {
                 }
- 
+                
+                // Add stock to list as DTO
                 stocks.add(new StockDTO(symbol, name, current, change, changePercent));
             } catch (Exception e) {
                 System.out.println("Error fetching data for " + symbol + ": " + e.getMessage());

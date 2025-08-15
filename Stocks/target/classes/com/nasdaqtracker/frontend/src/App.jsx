@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useMemo } from 'react'
-import { fetchStocks } from './api'
+import { fetchStocks } from './data/api'
+import Modal from './components/Modal'
 
 export default function App() {
   const [stocks, setStocks] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [sortConfig, setSortConfig] = useState({key:null, direction: "asc"})
+  const [selectedStock, setSelectedStock] = useState(null)
 
   useEffect(() => {
     fetchStocks()
@@ -66,23 +68,32 @@ const getSortIndicator = (key) => {
               </tr>
             </thead>
             <tbody>
-              {sortedStocks.map((s) => (
-                <tr key={s.symbol}>
-                  <td>{s.symbol}</td>
-                  <td className="name">{s.name}</td>
-                  <td>${s.currentPrice?.toFixed?.(2) ?? '-'}</td>
-                  <td className={s.priceChange >= 0 ? 'pos' : 'neg'}>
-                    {s.priceChange?.toFixed?.(2) ?? '-'}
-                  </td>
-                  <td className={s.priceChangePercent >= 0 ? 'pos' : 'neg'}>
-                    {s.priceChangePercent?.toFixed?.(2) ?? '-'}%
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+            {sortedStocks.map((s) => (
+              <tr 
+                key={s.symbol}
+                onClick={() => {
+                  console.log("clicked", s);
+                  setSelectedStock(s)}}
+                className="cursor-pointer hover:bg-gray-100"
+              >
+                <td>{s.symbol}</td>
+                <td className="name">{s.name}</td>
+                <td>${s.currentPrice?.toFixed?.(2) ?? '-'}</td>
+                <td className={s.priceChange >= 0 ? 'pos' : 'neg'}>
+                  {s.priceChange?.toFixed?.(2) ?? '-'}
+                </td>
+                <td className={s.priceChangePercent >= 0 ? 'pos' : 'neg'}>
+                  {s.priceChangePercent?.toFixed?.(2) ?? '-'}%
+                </td>
+              </tr>
+            ))}
+          </tbody>
           </table>
         </div>
       )}
+
+      {/* Modal */}
+      <Modal stock={selectedStock} onClose={() => setSelectedStock(null)} />
     </div>
   )
 }
