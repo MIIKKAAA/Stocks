@@ -1,0 +1,11 @@
+C:\Coding projects\Stocks\src\main\java\com\nasdaqtracker\backend\client\FinnhubClient.java
+C:\Coding projects\Stocks\src\main\java\com\nasdaqtracker\backend\controller\StockController.java
+C:\Coding projects\Stocks\src\main\java\com\nasdaqtracker\backend\model\dto\StockDTO.java
+C:\Coding projects\Stocks\src\main\java\com\nasdaqtracker\backend\model\Stock.java
+C:\Coding projects\Stocks\src\main\java\com\nasdaqtracker\backend\mapper\StockMapper.java
+C:\Coding projects\Stocks\src\main\java\com\nasdaqtracker\backend\service\impl\StockServiceImpl.java
+C:\Coding projects\Stocks\src\main\java\com\nasdaqtracker\backend\service\StockService.java
+C:\Coding projects\Stocks\src\main\java\com\nasdaqtracker\backend\exception\GlobalExceptionHandler.java
+C:\Coding projects\Stocks\src\main\java\com\nasdaqtracker\backend\model\dto\StockHistoryDTO.java
+C:\Coding projects\Stocks\src\main\java\com\nasdaqtracker\backend\model\StockHistory.java
+C:\Coding projects\Stocks\src\main\java\com\nasdaqtracker\NasdaqTrackerApplication.java

@@ -1,0 +1,17 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; background: #0f172a; color: #e2e8f0; }
+
+.container { max-width: 960px; margin: 40px auto; padding: 0 16px; }
+h1 { margin: 0 0 16px; font-size: 28px; }
+.info { padding: 12px 16px; background: #1e293b; border: 1px solid #334155; border-radius: 8px; }
+.error { padding: 12px 16px; background: #7f1d1d; border: 1px solid #ef4444; border-radius: 8px; }
+
+.table-wrap { overflow-x: auto; border: 1px solid #334155; border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 12px; }
+th { background: #111827; position: sticky; top: 0; }
+tr:nth-child(even) { background: #0b1220; }
+tr:nth-child(odd) { background: #0a1020; }
+.name { color: #93c5fd; }
+.pos { color: #34d399; }
+.neg { color: #f87171; }
